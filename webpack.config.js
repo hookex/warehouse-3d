@@ -6,7 +6,8 @@ const CONFIG = {
         'app': './src/index.js',
     },
     plugins: [new HtmlWebpackPlugin({
-        title: 'three.js',
         template: './src/index.html'
     })]
 };
+
+module.exports = CONFIG;
