@@ -9,26 +9,18 @@ let stats = new Stats({maxFPS: 60, maxMem: 100}); // Set upper limit of graph
 stats.begin();
 document.body.appendChild(stats.dom);
 
+import camera from './camera'
+import {resizeRendererToDisplaySize} from 'display'
+
 let cluster, _v3, _q;
 const Count = 100;
 
-let GIndex = parseInt(window.localStorage.getItem("GIndex") || "0")
-window.localStorage.setItem("GIndex", ++GIndex + "")
-
-GIndex = 0;
+let GIndex = 0;
 
 function main() {
     const canvas = document.querySelector('#warehouse');
     const renderer = new THREE.WebGLRenderer({canvas});
     renderer.shadowMap.enabled = true;
-
-
-    const fov = 45;
-    const aspect = 2;  // the canvas default
-    const near = 0.1;
-    const far = 20000;
-    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(4000, 2000, 4000);
 
     const controls = new OrbitControls(camera, canvas);
     controls.target.set(0, 5, 0);
@@ -124,17 +116,6 @@ function main() {
         });
     }
 
-    function resizeRendererToDisplaySize(renderer) {
-        const canvas = renderer.domElement;
-        const width = canvas.clientWidth;
-        const height = canvas.clientHeight;
-        const needResize = canvas.width !== width || canvas.height !== height;
-        if (needResize) {
-            renderer.setSize(width, height, false);
-        }
-        return needResize;
-    }
-
     let startQuan = 0
 
     function render() {
@@ -164,6 +145,7 @@ function main() {
         }
 
         renderer.render(scene, camera);
+
         stats.update();
         requestAnimationFrame(render);
     }
