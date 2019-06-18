@@ -5,6 +5,6 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 20000;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(4000, 2000, 4000);
+camera.position.set(0, 1000, 2200);
 
 export default camera

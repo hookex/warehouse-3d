@@ -22,7 +22,10 @@
   "homepage": "https://github.com/hookex/warebase-3d#readme",
   "dependencies": {
     "@drecom/stats.js": "^1.0.0",
+    "dat.gui": "^0.7.6",
+    "load-bmfont": "^1.4.0",
     "three": "^0.105.2",
+    "three-bmfont-text": "^2.3.0",
     "three-instanced-mesh": "^0.96.2",
     "three-orbitcontrols": "^2.102.1"
   },

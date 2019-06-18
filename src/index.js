@@ -1,8 +1,10 @@
-const InstancedMesh = require('three-instanced-mesh')(THREE);
-
-import * as THREE from 'three';
+import * as THREE from "three";
 import OrbitControls from 'three-orbitcontrols'
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
+
+import createGeometry from 'three-bmfont-text'
+import loadFont from 'load-bmfont'
+
+
 import Stats from '@drecom/stats.js'
 
 let stats = new Stats({maxFPS: 60, maxMem: 100}); // Set upper limit of graph
@@ -10,14 +12,14 @@ stats.begin();
 document.body.appendChild(stats.dom);
 
 import camera from './camera'
-import {resizeRendererToDisplaySize} from 'display'
+import {resizeRendererToDisplaySize} from './display'
+import {makeAxisGrid} from './gui'
 
-let cluster, _v3, _q;
-const Count = 100;
-
-let GIndex = 0;
+const WarehouseWidth = 2000
+const WarehouseLength = 2000
 
 function main() {
+
     const canvas = document.querySelector('#warehouse');
     const renderer = new THREE.WebGLRenderer({canvas});
     renderer.shadowMap.enabled = true;
@@ -27,96 +29,63 @@ function main() {
     controls.update();
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#DEFEFF');
 
+    const warehouseSystem = new THREE.Object3D();
+    scene.add(warehouseSystem)
+
+
+    // 背景色
+    scene.background = new THREE.Color('rgb(24, 27, 30)');
+
+    // 全局灯光
+    // {
+    //     const skyColor = 0xB1E1FF;  // light blue
+    //     const groundColor = 0xB97A20;  // brownish orange
+    //     const intensity = 1;
+    //     const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    //     scene.add(light);
+    // }
+
+    // 仓库底图
     {
-        const skyColor = 0xB1E1FF;  // light blue
-        const groundColor = 0xB97A20;  // brownish orange
-        const intensity = 1;
-        const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
-        scene.add(light);
+        // const loader = new THREE.TextureLoader();
+        // const texture = loader.load('https://threejsfundamentals.org/threejs/resources/images/checker.png');
+        // texture.wrapS = THREE.RepeatWrapping;
+        // texture.wrapT = THREE.RepeatWrapping;
+        // texture.magFilter = THREE.NearestFilter;
+        // const repeats = planeSize / 2;
+        // texture.repeat.set(repeats, repeats);
+
+        const planeGeo = new THREE.PlaneGeometry(WarehouseWidth, WarehouseLength, 200, 200);
+        const planeMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color('rgb(36, 41, 47)'),
+            side: THREE.DoubleSide,
+        });
+        const mesh = new THREE.Mesh(planeGeo, planeMat);
+        mesh.rotation.x = Math.PI * -0.5;
+        warehouseSystem.add(mesh);
+        // makeAxisGrid(warehouseSystem, "warehouse")
     }
 
     {
-        const gltfLoader = new GLTFLoader();
-        gltfLoader.load('https://threejsfundamentals.org/threejs/resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf', (gltf) => {
-            const root = gltf.scene;
+        let loader = new THREE.FontLoader();
+        loader.load('/src/fonts/helvetiker_bold.typeface.json', function (font) {
+            let text = "Hooke House";
 
-
-            const car = root.getObjectByName("CAR_03_World_ap_0")
-
-            let glTFGeometry = []
-            let singleGlTFGeometry = new THREE.BufferGeometry()
-
-            gltf.scene.traverse(function (child) {
-                if (child.name.toLocaleLowerCase().indexOf("car") >= 0) {
-                    child.visible = false
-                }
-
-                if (child.castShadow !== undefined) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-
-                if (child.isMesh) {
-                    glTFGeometry.push(child)
-                    // singleGlTFGeometry = singleGlTFGeometry.merge(child.geometry, 0)
-                }
+            let geo = new THREE.TextGeometry(text, {
+                font: font,
+                size: 100,
+                height: 10,
             });
 
-            scene.add(gltf.scene);
+            geo.computeBoundingBox();
 
-            {
-                let clone = root.clone()
-
-                clone.position.x = 0
-                clone.position.z = 2100
-                scene.add(clone)
-            }
-
-            {
-                let clone = root.clone()
-
-                clone.position.x = 2100
-                clone.position.z = 0
-                scene.add(clone)
-            }
-
-            {
-                let clone = root.clone()
-
-                clone.position.x = 2100
-                clone.position.z = 2100
-                scene.add(clone)
-            }
-
-            cluster = new InstancedMesh(
-                glTFGeometry[GIndex].geometry,
-                glTFGeometry[GIndex].material,
-                Count,
-                true,
-                false,
-                true,
-            );
-
-            console.log('cluster', cluster)
-
-            _v3 = new THREE.Vector3();
-            _q = new THREE.Quaternion();
-
-            for (let i = 0; i < Count; i++) {
-                cluster.setQuaternionAt(i, _q);
-                cluster.setPositionAt(i, _v3.set(i * 100, 1000, i * 100));
-                cluster.setScaleAt(i, _v3.set(1, 1, 1));
-            }
-
-            scene.add(cluster);
-
-            render()
+            let mat = new THREE.MeshBasicMaterial({color: 0x0e57a2});
+            let mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(-400, 100, WarehouseWidth/2)
+            scene.add(mesh);
         });
     }
-
-    let startQuan = 0
 
     function render() {
         if (resizeRendererToDisplaySize(renderer)) {
@@ -125,30 +94,14 @@ function main() {
             camera.updateProjectionMatrix();
         }
 
-        const delta = 0.001;
-
-        for (let i = 0; i < Count; i++) {
-            startQuan += delta
-
-            cluster.setQuaternionAt(i, _q);
-            let {x, y, z} = cluster.getPositionAt(i)
-            cluster.setPositionAt(i, _v3.set(x + startQuan, y, z));
-
-            let q = cluster.getQuaternionAt(i)
-
-            q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), startQuan)
-
-            cluster.setQuaternionAt(i, q);
-
-            cluster.needsUpdate('position')
-            cluster.needsUpdate('quaternion')
-        }
 
         renderer.render(scene, camera);
 
         stats.update();
         requestAnimationFrame(render);
     }
+
+    render()
 }
 
 main();
