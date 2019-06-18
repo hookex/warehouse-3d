@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import Dat from "dat.gui";
+import {WarehouseWidth} from "./index";
 
 const gui = new Dat.GUI();
 
@@ -10,7 +11,7 @@ class AxisGridHelper {
         axes.renderOrder = 2;
         node.add(axes);
 
-        const grid = new THREE.GridHelper(2000, 40);
+        const grid = new THREE.GridHelper(WarehouseWidth*2, 40);
         grid.material.depthTest = false;
         grid.renderOrder = 1;
         node.add(grid);
