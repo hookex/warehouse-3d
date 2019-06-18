@@ -13,7 +13,8 @@ document.body.appendChild(stats.dom);
 
 import camera from './camera'
 import {resizeRendererToDisplaySize} from './display'
-import {makeAxisGrid} from './gui'
+import {initShelf} from './shelf'
+import {initBox} from './box'
 
 const WarehouseWidth = 2000
 const WarehouseLength = 2000
@@ -38,13 +39,13 @@ function main() {
     scene.background = new THREE.Color('rgb(24, 27, 30)');
 
     // 全局灯光
-    // {
-    //     const skyColor = 0xB1E1FF;  // light blue
-    //     const groundColor = 0xB97A20;  // brownish orange
-    //     const intensity = 1;
-    //     const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
-    //     scene.add(light);
-    // }
+    {
+        // const skyColor = 0xFFFFFF;  // light blue
+        // const groundColor = 0xB97A20;  // brownish orange
+        // const intensity = 1;
+        // const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+        // scene.add(light);
+    }
 
     // 仓库底图
     {
@@ -58,11 +59,12 @@ function main() {
 
         const planeGeo = new THREE.PlaneGeometry(WarehouseWidth, WarehouseLength, 200, 200);
         const planeMat = new THREE.MeshBasicMaterial({
-            color: new THREE.Color('rgb(36, 41, 47)'),
+            color: new THREE.Color(0x999999),
             side: THREE.DoubleSide,
         });
         const mesh = new THREE.Mesh(planeGeo, planeMat);
         mesh.rotation.x = Math.PI * -0.5;
+        mesh.position.set(0, 0, 0)
         warehouseSystem.add(mesh);
         // makeAxisGrid(warehouseSystem, "warehouse")
     }
@@ -82,10 +84,13 @@ function main() {
 
             let mat = new THREE.MeshBasicMaterial({color: 0x0e57a2});
             let mesh = new THREE.Mesh(geo, mat);
-            mesh.position.set(-400, 100, WarehouseWidth/2)
+            mesh.position.set(-400, 100, WarehouseWidth / 2)
             scene.add(mesh);
         });
     }
+
+    // initShelf(scene)
+    initBox(scene)
 
     function render() {
         if (resizeRendererToDisplaySize(renderer)) {
