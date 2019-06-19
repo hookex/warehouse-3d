@@ -4,8 +4,10 @@ import {WarehouseLength, WarehouseWidth} from "./index";
 const InstancedMesh = require('three-instanced-mesh')(THREE);
 
 export function initBox(scene, count = 500) {
-    let geometry = new THREE.BoxBufferGeometry(36, 100, 72);
-    let material = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
+    let geometry = new THREE.BoxBufferGeometry(36, 100, 72, );
+    let material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+    material.transparent = true;
+    material.opacity = 0.7;
 
     const cluster = new InstancedMesh(
         geometry,
@@ -28,13 +30,13 @@ export function initBox(scene, count = 500) {
 
             const {x, z} = getRandomPosition()
             cluster.setQuaternionAt(index, quaternion);
-            cluster.setPositionAt(index, v3.set(x, 50, z));
+            cluster.setPositionAt(index, v3.set(x, 40, z));
             cluster.setScaleAt(index, v3.set(1, 1, 1));
         }
     }
 
     cluster.castShadow = true;
-    cluster.receiveShadow = true;
+    // cluster.receiveShadow = true;
 
     scene.add(cluster)
 }

@@ -18,7 +18,7 @@ export function initLight(group) {
     spotLight.shadow.mapSize.height = 1024;
     group.add(spotLight);
 
-    makeAxisGrid(spotLight, "spotLight")
+    // makeAxisGrid(spotLight, "spotLight")
 
     // const dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
     // dirLight.name = 'Dir. Light';

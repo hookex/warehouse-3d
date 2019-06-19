@@ -46,7 +46,7 @@ function main() {
 
     initPlane(warehouseSystem);
     initLight(scene);
-    initBox(warehouseSystem);
+    initBox(warehouseSystem, 200);
     initLogo(warehouseSystem);
 
     function render() {

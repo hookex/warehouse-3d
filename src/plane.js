@@ -12,7 +12,7 @@ export function initPlane(group) {
     // texture.repeat.set(repeats, repeats);
 
     const planeGeo = new THREE.PlaneGeometry(WarehouseWidth, WarehouseLength, 200, 200);
-    const planeMat = new THREE.MeshPhongMaterial({
+    const planeMat = new THREE.MeshLambertMaterial({
         color: new THREE.Color(0x999999),
         side: THREE.DoubleSide,
         shininess: 150,
@@ -21,7 +21,7 @@ export function initPlane(group) {
     });
     const mesh = new THREE.Mesh(planeGeo, planeMat);
     mesh.rotation.x = Math.PI * -0.5;
-    mesh.position.set(WarehouseWidth / 2, -1, WarehouseLength / 2);
+    mesh.position.set(WarehouseWidth / 2, 0, WarehouseLength / 2);
     mesh.castShadow = false;
     mesh.receiveShadow = true;
     group.add(mesh);
