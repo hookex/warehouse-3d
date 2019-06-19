@@ -69,19 +69,14 @@ async function main() {
         if (Warehouse.mixer != null) {
             Warehouse.mixer.update(delta);
         }
-        //
-        // Warehouse.man.forEach((man) => {
-        //     const direction = new THREE.Vector3()
-        //     man.getWorldDirection(direction);
-        //     let {x, y, z} = man.position;
-        //     if (direction.x !== 0) {
-        //         x++;
-        //     }
-        //     if (direction.z !== 0) {
-        //         z++;
-        //     }
-        //     man.position.set(x, y, z)
-        // });
+
+        Warehouse.man.forEach((man) => {
+            const direction = new THREE.Vector3();
+            man.getWorldDirection(direction);
+            let {x, y, z} = man.position;
+            x+=2;
+            man.position.set(x, y, z)
+        });
 
         renderer.render(scene, camera);
 

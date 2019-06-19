@@ -8,12 +8,15 @@ export function initMan(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load('/src/models/man/CesiumMan.gltf', (gltf) => {
-        console.log('gltf', gltf)
+        console.log('gltf', gltf);
 
-        gltf.scene.rotation.copy(new THREE.Euler(0,  -Math.PI / 2, 0));
+        gltf.scene.rotation.copy(new THREE.Euler(0, -Math.PI / 2, 0));
         gltf.scene.position.set(0, 0, WarehouseLength);
+        const {x, y, z} = gltf.scene.position;
+        gltf.scene.lookAt(x, y, z+100);
 
-        console.log('gltf.scene', gltf.scene.getWorldDirection())
+
+        // console.log('gltf.scene', gltf.scene.getWorldDirection())
 
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
@@ -21,7 +24,7 @@ export function initMan(group, Warehouse) {
                     child.castShadow = true;
                     // child.rotation.y = Math.PI * 0.5
                 }
-                console.log("mesh", child)
+                console.log("mesh", child);
             }
         });
 
