@@ -12,13 +12,18 @@ export function initPlane(group) {
     // texture.repeat.set(repeats, repeats);
 
     const planeGeo = new THREE.PlaneGeometry(WarehouseWidth, WarehouseLength, 200, 200);
-    const planeMat = new THREE.MeshBasicMaterial({
+    const planeMat = new THREE.MeshPhongMaterial({
         color: new THREE.Color(0x999999),
         side: THREE.DoubleSide,
+        shininess: 150,
+        specular: 0x888888,
+        shading: THREE.SmoothShading
     });
     const mesh = new THREE.Mesh(planeGeo, planeMat);
     mesh.rotation.x = Math.PI * -0.5;
-    mesh.position.set(WarehouseWidth/2, -1, WarehouseLength/2)
+    mesh.position.set(WarehouseWidth / 2, -1, WarehouseLength / 2);
+    mesh.castShadow = false;
+    mesh.receiveShadow = true;
     group.add(mesh);
     // makeAxisGrid(warehouseSystem, "warehouse")
 }

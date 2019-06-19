@@ -5,7 +5,7 @@ const InstancedMesh = require('three-instanced-mesh')(THREE);
 
 export function initBox(scene, count = 500) {
     let geometry = new THREE.BoxBufferGeometry(36, 100, 72);
-    let material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+    let material = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
 
     const cluster = new InstancedMesh(
         geometry,
@@ -32,6 +32,9 @@ export function initBox(scene, count = 500) {
             cluster.setScaleAt(index, v3.set(1, 1, 1));
         }
     }
+
+    cluster.castShadow = true;
+    cluster.receiveShadow = true;
 
     scene.add(cluster)
 }

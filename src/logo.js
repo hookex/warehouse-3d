@@ -14,9 +14,10 @@ export function initLogo(group) {
 
         geo.computeBoundingBox();
 
-        let mat = new THREE.MeshBasicMaterial({color: 0x0e57a2});
+        let mat = new THREE.MeshPhongMaterial({color: 0x0e57a2});
         let mesh = new THREE.Mesh(geo, mat);
-        mesh.position.set(-400 + WarehouseWidth/2, 100, WarehouseWidth)
+        mesh.castShadow = true;
+        mesh.position.set(-400 + WarehouseWidth / 2, 100, WarehouseWidth)
         group.add(mesh);
     });
 }

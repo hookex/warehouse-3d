@@ -21,6 +21,7 @@ import {makeAxisGrid} from "./gui";
 
 export const WarehouseWidth = 2000;
 export const WarehouseLength = 2000;
+export const WarehouseUnit = 40;
 
 
 function main() {
@@ -28,6 +29,7 @@ function main() {
     const canvas = document.querySelector('#warehouse');
     const renderer = new THREE.WebGLRenderer({canvas});
     renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.BasicShadowMap;
 
     const camera = initCamera()
 
@@ -40,11 +42,10 @@ function main() {
 
     const warehouseSystem = new THREE.Object3D();
     scene.add(warehouseSystem);
-
-    makeAxisGrid(warehouseSystem);
+    // makeAxisGrid(warehouseSystem);
 
     initPlane(warehouseSystem);
-    initLight(warehouseSystem);
+    initLight(scene);
     initBox(warehouseSystem);
     initLogo(warehouseSystem);
 
