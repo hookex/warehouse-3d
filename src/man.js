@@ -19,19 +19,20 @@ export function initMan(group, Warehouse) {
 
         const man = gltf.scene;
 
-        // const box = new THREE.Box3().setFromObject(man);
-        // Warehouse.unit / box.getSize().y
-
         const fix = {
             rot: [0, -Math.PI / 2, 0],
             scalar: 50,
         };
 
+
+        // reset
         const obj = new THREE.Object3D();
         man.getWorldDirection(obj.position);
-        man.position.set(0, 0, 0);
         man.rotation.set(...fix.rot);
         man.scale.setScalar(fix.scalar);
+        const box = new THREE.Box3().setFromObject(man);
+        const length = box.getSize().x / 2;
+        man.position.set(length / 2, 0, length / 2);
         obj.add(man);
         Warehouse.man.push(obj);
         group.add(obj);

@@ -29,7 +29,7 @@ export function initBox(scene, count = 500) {
             index++;
 
             const {x, z} = getRandomPosition()
-            // cluster.setQuaternionAt(index, quaternion);
+            cluster.setQuaternionAt(index, quaternion);
             cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2, Warehouse.unit, z + Warehouse.unit / 2));
             cluster.setScaleAt(index, v3.set(1, 1, 1));
         }
