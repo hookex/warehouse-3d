@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import {WarehouseLength, WarehouseWidth} from "./index";
-
+import {Warehouse} from "./index";
+import {makeAxisGrid} from "./gui";
 
 export function initPlane(group) {
     // const loader = new THREE.TextureLoader();
@@ -11,7 +11,7 @@ export function initPlane(group) {
     // const repeats = planeSize / 2;
     // texture.repeat.set(repeats, repeats);
 
-    const planeGeo = new THREE.PlaneGeometry(WarehouseWidth, WarehouseLength, 200, 200);
+    const planeGeo = new THREE.PlaneGeometry(Warehouse.width, Warehouse.length, 1, 1);
     const planeMat = new THREE.MeshLambertMaterial({
         color: new THREE.Color(0x999999),
         side: THREE.DoubleSide,
@@ -21,9 +21,9 @@ export function initPlane(group) {
     });
     const mesh = new THREE.Mesh(planeGeo, planeMat);
     mesh.rotation.x = Math.PI * -0.5;
-    mesh.position.set(WarehouseWidth / 2, 0, WarehouseLength / 2);
+    mesh.position.set(Warehouse.width / 2, 0, Warehouse.length / 2);
     mesh.castShadow = false;
     mesh.receiveShadow = true;
     group.add(mesh);
-    // makeAxisGrid(warehouseSystem, "warehouse")
+    makeAxisGrid(group, "warehouse")
 }

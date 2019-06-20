@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {WarehouseWidth} from "./index";
+import {Warehouse} from "./index";
 
 export function initLogo(group) {
     let loader = new THREE.FontLoader();
@@ -17,7 +17,7 @@ export function initLogo(group) {
         let mat = new THREE.MeshPhongMaterial({color: 0x0e57a2});
         let mesh = new THREE.Mesh(geo, mat);
         mesh.castShadow = true;
-        mesh.position.set(-400 + WarehouseWidth / 2, 100, WarehouseWidth)
+        mesh.position.set(-400 + Warehouse.width / 2, 100, Warehouse.width)
         group.add(mesh);
     });
 }

@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import {makeAxisGrid} from "./gui";
-import {WarehouseLength, WarehouseUnit, WarehouseWidth} from "./index";
+import {Warehouse, WarehouseLength, WarehouseUnit, WarehouseWidth} from "./index";
 
 export function initLight(group) {
     // Lights
@@ -10,7 +10,7 @@ export function initLight(group) {
     spotLight.name = 'Spot Light';
     spotLight.angle = 1;
     spotLight.penumbra = 0.3;
-    spotLight.position.set(WarehouseWidth / 2, WarehouseLength, 2 * WarehouseWidth);
+    spotLight.position.set(Warehouse.width / 2, Warehouse.length, 2 * Warehouse.width);
     spotLight.castShadow = true;
     spotLight.shadow.camera.near = 1;
     spotLight.shadow.camera.far = 6000;

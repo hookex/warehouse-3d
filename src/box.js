@@ -1,13 +1,13 @@
 import * as THREE from "three";
-import {WarehouseLength, WarehouseWidth} from "./index";
+import {Warehouse} from "./index";
 
 const InstancedMesh = require('three-instanced-mesh')(THREE);
 
 export function initBox(scene, count = 500) {
-    let geometry = new THREE.BoxBufferGeometry(36, 100, 72, );
+    let geometry = new THREE.BoxBufferGeometry(Warehouse.unit, Warehouse.unit * 2, Warehouse.unit);
     let material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
     material.transparent = true;
-    material.opacity = 0.7;
+    material.opacity = 0.8;
 
     const cluster = new InstancedMesh(
         geometry,
@@ -29,8 +29,8 @@ export function initBox(scene, count = 500) {
             index++;
 
             const {x, z} = getRandomPosition()
-            cluster.setQuaternionAt(index, quaternion);
-            cluster.setPositionAt(index, v3.set(x, 40, z));
+            // cluster.setQuaternionAt(index, quaternion);
+            cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2, Warehouse.unit, z + Warehouse.unit / 2));
             cluster.setScaleAt(index, v3.set(1, 1, 1));
         }
     }
@@ -45,9 +45,8 @@ export function initBox(scene, count = 500) {
 function getRandomPosition() {
     const unit = 40;
 
-    const ranX = Math.random() * (WarehouseWidth);
-    const ranZ = Math.random() * (WarehouseLength - 200);
-
+    const ranX = Math.random() * (Warehouse.width);
+    const ranZ = Math.random() * (Warehouse.length - Warehouse.unit * 8);
 
     return {
         x: ranX - ranX % unit,

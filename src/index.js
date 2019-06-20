@@ -19,14 +19,14 @@ import {initPlane} from "./plane";
 import {initLogo} from "./logo";
 import {makeAxisGrid} from "./gui";
 import {initMan} from "./man";
-
-export const WarehouseWidth = 2000;
-export const WarehouseLength = 2000;
-export const WarehouseUnit = 40;
+import {initManInstance} from "./man.instance";
 
 let clock = new THREE.Clock();
 
-const Warehouse = {
+export const Warehouse = {
+    width: 2000,
+    length: 2000,
+    unit: 40,
     mixer: null,
     man: [],
 };
@@ -38,10 +38,10 @@ async function main() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.BasicShadowMap;
 
-    const camera = initCamera()
+    const camera = initCamera();
 
     const controls = new OrbitControls(camera, canvas);
-    controls.target.set(WarehouseWidth / 2, 5, WarehouseLength / 2);
+    controls.target.set(Warehouse.width / 2, 5, Warehouse.length / 2);
     controls.update();
 
     const scene = new THREE.Scene();
@@ -56,6 +56,7 @@ async function main() {
     initBox(warehouseSystem, 200);
     initLogo(warehouseSystem);
     initMan(warehouseSystem, Warehouse);
+    initManInstance(warehouseSystem, Warehouse);
 
     function render() {
         if (resizeRendererToDisplaySize(renderer)) {
@@ -74,7 +75,7 @@ async function main() {
             const direction = new THREE.Vector3();
             man.getWorldDirection(direction);
             let {x, y, z} = man.position;
-            x+=2;
+            z += 2;
             man.position.set(x, y, z)
         });
 
