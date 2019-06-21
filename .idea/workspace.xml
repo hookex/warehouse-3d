@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa27ea56-435c-43ec-b312-4180ff1c8c0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/box.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/arm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/man.instance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/man.instance.js" afterDir="false" />
     </list>
@@ -20,15 +19,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -36,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="255">
+              <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#334#387#0" expanded="true" />
@@ -49,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/man.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+            <state relative-caret-position="240">
+              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -59,10 +53,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/arm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/plane.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="16" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="345">
+              <caret line="23" column="68" lean-forward="true" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/box.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="130">
-              <caret line="22" column="44" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="44" />
+              <caret line="22" column="44" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="44" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -100,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/man.instance.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="62" column="76" selection-start-line="62" selection-start-column="76" selection-end-line="62" selection-end-column="76" />
+            <state relative-caret-position="496">
+              <caret line="64" column="9" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="64" selection-end-column="9" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -116,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/src/camera.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -125,28 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>opt</find>
-      <find>AxisGridHelper</find>
-      <find>units</find>
-      <find>GridHelper</find>
-      <find>gui</find>
-      <find>texture</find>
-      <find>car</find>
-      <find>initShelf</find>
-      <find>cluster</find>
-      <find>InstancedMesh</find>
-      <find>geometry</find>
-      <find>var</find>
-      <find>light</find>
-      <find>bo</find>
-      <find>sc</find>
-      <find>fixes</find>
-      <find>frameArea</find>
-      <find>mixer</find>
-      <find>gltf</find>
-      <find>boxes</find>
-      <find>WarehouseWidth</find>
-      <find>WarehouseLength</find>
       <find>WarehouseUnit</find>
       <find>initManInstance</find>
       <find>Warehouse</find>
@@ -155,6 +142,28 @@
       <find>grid</find>
       <find>node</find>
       <find>scene</find>
+      <find>cluster</find>
+      <find>initMan</find>
+      <find>numInstances</find>
+      <find>manCluster</find>
+      <find>material</find>
+      <find>mixer</find>
+      <find>render</find>
+      <find>manMixer</find>
+      <find>man</find>
+      <find>manCou</find>
+      <find>GLTFLoader.</find>
+      <find>arm</find>
+      <find>console.log(&quot;mesh&quot;, child);</find>
+      <find>index</find>
+      <find>initArm</find>
+      <find>arms</find>
+      <find>armCount</find>
+      <find>group</find>
+      <find>j</find>
+      <find>getWorldDirection</find>
+      <find>armMixer</find>
+      <find>armMixers</find>
     </findStrings>
     <replaceStrings>
       <replace>Warehouse.width</replace>
@@ -185,13 +194,14 @@
         <option value="$PROJECT_DIR$/src/light.js" />
         <option value="$PROJECT_DIR$/src/logo.js" />
         <option value="$PROJECT_DIR$/src/camera.js" />
-        <option value="$PROJECT_DIR$/src/plane.js" />
         <option value="$PROJECT_DIR$/src/gui.js" />
-        <option value="$PROJECT_DIR$/src/man.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/util.js" />
         <option value="$PROJECT_DIR$/src/box.js" />
+        <option value="$PROJECT_DIR$/src/man.js" />
         <option value="$PROJECT_DIR$/src/man.instance.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/arm.js" />
+        <option value="$PROJECT_DIR$/src/plane.js" />
       </list>
     </option>
   </component>
@@ -217,6 +227,19 @@
               <item name="warehouse-3d" type="b2602c69:ProjectViewProjectNode" />
               <item name="warehouse-3d" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="warehouse-3d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="warehouse-3d" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="warehouse-3d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="warehouse-3d" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="robotarm" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -282,12 +305,12 @@
       <updated>1560775909900</updated>
       <workItem from="1560775912749" duration="388000" />
       <workItem from="1560776416609" duration="1828000" />
-      <workItem from="1560825952548" duration="37516000" />
+      <workItem from="1560825952548" duration="46211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39732000" />
+    <option name="totallyTimeSpent" value="48427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1392" height="877" extended-state="6" />
@@ -468,12 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/arm.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/agv.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/three/src/math/Vector3.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -487,7 +504,7 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -521,14 +538,7 @@
     <entry file="file://$PROJECT_DIR$/src/camera.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plane.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="20" />
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -555,16 +565,6 @@
     <entry file="file://$PROJECT_DIR$/src/car.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/man.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -572,10 +572,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/box.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="22" column="44" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/three-instanced-mesh/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="380" column="16" lean-forward="true" selection-start-line="380" selection-start-column="16" selection-end-line="380" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agv.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/man.instance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="64" column="9" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="64" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/man.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="255">
+          <caret line="86" column="36" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#334#387#0" expanded="true" />
@@ -583,20 +623,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/box.js">
+    <entry file="file://$PROJECT_DIR$/src/arm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="22" column="44" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="44" />
+        <state relative-caret-position="315">
+          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/man.instance.js">
+    <entry file="file://$PROJECT_DIR$/src/plane.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="62" column="76" selection-start-line="62" selection-start-column="76" selection-end-line="62" selection-end-column="76" />
+        <state relative-caret-position="345">
+          <caret line="23" column="68" lean-forward="true" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

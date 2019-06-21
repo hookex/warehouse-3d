@@ -20,6 +20,8 @@ import {initLogo} from "./logo";
 import {makeAxisGrid} from "./gui";
 import {initMan} from "./man";
 import {initManInstance} from "./man.instance";
+import {getRandomPosition} from "./util";
+import {initArm} from "./arm";
 
 let clock = new THREE.Clock();
 
@@ -29,10 +31,14 @@ export const Warehouse = {
     unit: 40,
     mixer: null,
     man: [],
+    manCluster: null,
+    manMixer: undefined,
+    arms: [],
+    armMixers: [],
 };
 
 
-async function main() {
+function main() {
     const canvas = document.querySelector('#warehouse');
     const renderer = new THREE.WebGLRenderer({canvas});
     renderer.shadowMap.enabled = true;
@@ -55,7 +61,8 @@ async function main() {
     initLight(scene);
     initBox(warehouseSystem, 200);
     initLogo(warehouseSystem);
-    // initMan(warehouseSystem, Warehouse);
+    initArm(warehouseSystem, Warehouse);
+    initMan(warehouseSystem, Warehouse);
     initManInstance(warehouseSystem, Warehouse);
 
     function render() {
@@ -71,6 +78,16 @@ async function main() {
             Warehouse.mixer.update(delta);
         }
 
+        if (Warehouse.manMixer != null) {
+            Warehouse.manMixer.update(delta);
+        }
+
+        if (Warehouse.armMixers && Warehouse.armMixers.length) {
+            Warehouse.armMixers.forEach((mixer) => {
+                mixer.update(delta);
+            })
+        }
+
         Warehouse.man.forEach((man) => {
             const direction = new THREE.Vector3();
             man.getWorldDirection(direction);
@@ -78,6 +95,15 @@ async function main() {
             z += 2;
             man.position.set(x, y, z)
         });
+
+        if (Warehouse.manCluster) {
+            for (let i = 0; i < Warehouse.manCluster.numInstances; i++) {
+                let {x, y, z} = Warehouse.manCluster.getPositionAt(i);
+                const v3 = new THREE.Vector3();
+                Warehouse.manCluster.setPositionAt(i, v3.set(x, y, ++z));
+                Warehouse.manCluster.needsUpdate('position')
+            }
+        }
 
         renderer.render(scene, camera);
 
@@ -89,3 +115,4 @@ async function main() {
 }
 
 main();
+

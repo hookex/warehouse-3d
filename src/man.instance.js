@@ -14,7 +14,6 @@ export function initManInstance(group) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {
                     child.castShadow = true;
-                    // child.rotation.y = Math.PI * 0.5
                 }
                 console.log("mesh", child);
             }
@@ -60,11 +59,15 @@ export function initManInstance(group) {
                 index++;
                 const {x, z} = getRandomPosition(Warehouse.width, Warehouse.length - Warehouse.unit * 8);
                 cluster.setQuaternionAt(index, quaternion);
-                cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2,0, z + Warehouse.unit / 2));
+                cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2, 0, z + Warehouse.unit / 2));
                 cluster.setScaleAt(index, v3.set(1, 1, 1));
             }
         }
 
+        Warehouse.manMixer = new THREE.AnimationMixer(gltf.scene);
+        Warehouse.manMixer.clipAction(gltf.animations[0]).play();
+
+        Warehouse.manCluster = cluster;
         group.add(cluster);
     });
 }
