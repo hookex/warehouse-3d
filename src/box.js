@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import {Warehouse} from "./index";
+import {getRandomPosition} from "./util";
 
 const InstancedMesh = require('three-instanced-mesh')(THREE);
 
@@ -27,8 +28,7 @@ export function initBox(scene, count = 500) {
     for (let i = 0; i < subCount; i++) {
         for (let j = 0; j < subCount; j++) {
             index++;
-
-            const {x, z} = getRandomPosition()
+            const {x, z} = getRandomPosition(Warehouse.width, Warehouse.length - Warehouse.unit * 8);
             cluster.setQuaternionAt(index, quaternion);
             cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2, Warehouse.unit, z + Warehouse.unit / 2));
             cluster.setScaleAt(index, v3.set(1, 1, 1));
@@ -42,14 +42,3 @@ export function initBox(scene, count = 500) {
 }
 
 
-function getRandomPosition() {
-    const unit = 40;
-
-    const ranX = Math.random() * (Warehouse.width);
-    const ranZ = Math.random() * (Warehouse.length - Warehouse.unit * 8);
-
-    return {
-        x: ranX - ranX % unit,
-        z: ranZ - ranZ % unit,
-    }
-}

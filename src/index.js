@@ -55,7 +55,7 @@ async function main() {
     initLight(scene);
     initBox(warehouseSystem, 200);
     initLogo(warehouseSystem);
-    initMan(warehouseSystem, Warehouse);
+    // initMan(warehouseSystem, Warehouse);
     initManInstance(warehouseSystem, Warehouse);
 
     function render() {

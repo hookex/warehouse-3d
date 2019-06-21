@@ -1,14 +1,15 @@
 import * as THREE from "three";
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
+import {getRandomPosition} from "./util";
+import {Warehouse} from "./index";
 
 const InstancedMesh = require('three-instanced-mesh')(THREE);
+const manCount = 100;
 
 export function initManInstance(group) {
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load('/src/models/man/CesiumMan.gltf', (gltf) => {
-        console.log('gltf', gltf);
-
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {
@@ -20,63 +21,50 @@ export function initManInstance(group) {
         });
 
         const root = gltf.scene;
-        const instance = root.getObjectByName('Cesium_Man');
+        const man = root.getObjectByName('Cesium_Man');
 
-        if (!instance) {
+        if (!man) {
             return;
         }
 
+        const fix = {
+            rot: [-Math.PI / 2, -Math.PI / 2, 0],
+            scalar: 50,
+        };
+
+        man.geometry.rotateX(fix.rot[0]);
+        man.geometry.rotateY(fix.rot[1]);
+        man.geometry.rotateZ(fix.rot[2]);
+        man.geometry.scale(fix.scalar, fix.scalar, fix.scalar);
+        const box = new THREE.Box3().setFromObject(man);
+        const length = box.getSize().x / 2;
+        man.position.set(length / 2, 0, length / 2);
+
         const cluster = new InstancedMesh(
-            instance.geometry,
-            instance.material,
-            10,
+            man.geometry,
+            man.material,
+            manCount,
             true,
             false,
             true,
         );
 
-        let _v3 = new THREE.Vector3();
-        let _q = new THREE.Quaternion();
+        let v3 = new THREE.Vector3();
+        let quaternion = new THREE.Quaternion();
 
-        for (let i = 0; i < 10; i++) {
-            cluster.setQuaternionAt(i, _q);
-            cluster.setPositionAt(i, _v3.set(i * 100, 0, i * 100));
-            cluster.setScaleAt(i, _v3.set(100, 100, 100));
+        let subCount = parseInt(Math.sqrt(manCount))
+
+        let index = 0;
+        for (let i = 0; i < subCount; i++) {
+            for (let j = 0; j < subCount; j++) {
+                index++;
+                const {x, z} = getRandomPosition(Warehouse.width, Warehouse.length - Warehouse.unit * 8);
+                cluster.setQuaternionAt(index, quaternion);
+                cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2,0, z + Warehouse.unit / 2));
+                cluster.setScaleAt(index, v3.set(1, 1, 1));
+            }
         }
 
         group.add(cluster);
-
-        // const loadedCars = root.getObjectByName('Cars');
-        // const fixes = [
-        //     {prefix: 'Car_08', y: 0, rot: [Math.PI * .5, 0, Math.PI * .5],},
-        //     {prefix: 'CAR_03', y: 33, rot: [0, Math.PI, 0],},
-        //     {prefix: 'Car_04', y: 40, rot: [0, Math.PI, 0],},
-        // ];
-        //
-        // root.updateMatrixWorld();
-        // for (const car of loadedCars.children.slice()) {
-        //     const fix = fixes.find(fix => car.name.startsWith(fix.prefix));
-        //     const obj = new THREE.Object3D();
-        //     car.position.set(0, fix.y, 0);
-        //     car.rotation.set(...fix.rot);
-        //     obj.add(car);
-        //     scene.add(obj);
-        //     shlefs.push(obj);
-        // }
-        //
-        // // compute the box that contains all the stuff
-        // // from root and below
-        // const box = new THREE.Box3().setFromObject(root);
-        //
-        // const boxSize = box.getSize(new THREE.Vector3()).length();
-        // const boxCenter = box.getCenter(new THREE.Vector3());
-        //
-        // // set the camera to frame the box
-        // frameArea(boxSize * 0.5, boxSize, boxCenter, camera);
-        //
-        // // update the Trackball controls to handle the new size
-        // controls.maxDistance = boxSize * 10;
-        // controls.target.copy(boxCenter);
-        // controls.update();
     });
 }
