@@ -8,6 +8,7 @@ export function initMan(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load('/src/models/man/CesiumMan.gltf', (gltf) => {
+        console.log('gltf', gltf)
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {
@@ -23,7 +24,6 @@ export function initMan(group, Warehouse) {
             rot: [0, -Math.PI / 2, 0],
             scalar: 50,
         };
-
 
         // reset
         const obj = new THREE.Object3D();
