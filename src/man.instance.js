@@ -35,6 +35,7 @@ export function initManInstance(group) {
         man.geometry.rotateY(fix.rot[1]);
         man.geometry.rotateZ(fix.rot[2]);
         man.geometry.scale(fix.scalar, fix.scalar, fix.scalar);
+
         const box = new THREE.Box3().setFromObject(man);
         const length = box.getSize().x / 2;
         man.position.set(length / 2, 0, length / 2);

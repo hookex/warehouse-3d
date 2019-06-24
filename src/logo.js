@@ -4,20 +4,23 @@ import {Warehouse} from "./index";
 export function initLogo(group) {
     let loader = new THREE.FontLoader();
     loader.load('/src/fonts/helvetiker_bold.typeface.json', function (font) {
-        let text = "Hooke House";
+        let text = "Warehouse";
 
         let geo = new THREE.TextGeometry(text, {
             font: font,
-            size: 100,
-            height: 10,
+            size: Warehouse.unit / 2,
+            height: Warehouse.unit / 8,
         });
 
-        geo.computeBoundingBox();
 
         let mat = new THREE.MeshPhongMaterial({color: 0x0e57a2});
         let mesh = new THREE.Mesh(geo, mat);
         mesh.castShadow = true;
-        mesh.position.set(-400 + Warehouse.width / 2, 100, Warehouse.width)
+
+        const box = new THREE.Box3().setFromObject(mesh);
+        const fontWidth = box.getSize().x;
+
+        mesh.position.set(Warehouse.width / 2 - fontWidth / 2, 0, Warehouse.length - Warehouse.unit / 2)
         group.add(mesh);
     });
 }

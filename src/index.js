@@ -13,7 +13,7 @@ document.body.appendChild(stats.dom);
 import {resizeRendererToDisplaySize} from './display'
 import {initShelf} from './shelf'
 import {initCamera} from './camera'
-import {initBox} from './box'
+import {initMeshShelf} from './mesh-shelf'
 import {initLight} from "./light";
 import {initPlane} from "./plane";
 import {initLogo} from "./logo";
@@ -23,12 +23,15 @@ import {initManInstance} from "./man.instance";
 import {getRandomPosition} from "./util";
 import {initArm} from "./arm";
 
+import {MapData} from './map-data'
+import {initRotates} from "./rotate";
+
 let clock = new THREE.Clock();
 
 export const Warehouse = {
-    width: 2000,
-    length: 2000,
-    unit: 40,
+    width: MapData.width * MapData.unit,
+    length: MapData.length * MapData.unit,
+    unit: MapData.unit,
     mixer: null,
     man: [],
     manCluster: null,
@@ -44,7 +47,7 @@ function main() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.BasicShadowMap;
 
-    const camera = initCamera();
+    const camera = initCamera(Warehouse);
 
     const controls = new OrbitControls(camera, canvas);
     controls.target.set(Warehouse.width / 2, 5, Warehouse.length / 2);
@@ -59,11 +62,12 @@ function main() {
 
     initPlane(warehouseSystem);
     initLight(scene);
-    initBox(warehouseSystem, 200);
-    initLogo(warehouseSystem);
+    initMeshShelf(warehouseSystem, 200);
+    initLogo(warehouseSystem, Warehouse);
     initArm(warehouseSystem, Warehouse);
-    initMan(warehouseSystem, Warehouse);
-    initManInstance(warehouseSystem, Warehouse);
+    initRotates(warehouseSystem, Warehouse);
+    // initMan(warehouseSystem, Warehouse);
+    // initManInstance(warehouseSystem, Warehouse);
 
     function render() {
         if (resizeRendererToDisplaySize(renderer)) {

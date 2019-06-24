@@ -1,10 +1,20 @@
 import * as THREE from "three";
 import {Warehouse} from "./index";
 import {getRandomPosition} from "./util";
+import {MapData} from "./map-data";
 
 const InstancedMesh = require('three-instanced-mesh')(THREE);
 
-export function initBox(scene, count = 500) {
+export function initMeshShelf(scene) {
+    let shelvesData = MapData.shelves.map((data) => {
+        return {
+            x: data.x * MapData.unit,
+            z: data.z * MapData.unit,
+        }
+    });
+
+    let count = shelvesData.length;
+
     let geometry = new THREE.BoxBufferGeometry(Warehouse.unit, Warehouse.unit * 2, Warehouse.unit);
     let material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
     material.transparent = true;
@@ -24,19 +34,15 @@ export function initBox(scene, count = 500) {
 
     let subCount = parseInt(Math.sqrt(count))
 
-    let index = 0;
-    for (let i = 0; i < subCount; i++) {
-        for (let j = 0; j < subCount; j++) {
-            index++;
-            const {x, z} = getRandomPosition(Warehouse.width, Warehouse.length - Warehouse.unit * 8);
-            cluster.setQuaternionAt(index, quaternion);
-            cluster.setPositionAt(index, v3.set(x + Warehouse.unit / 2, Warehouse.unit, z + Warehouse.unit / 2));
-            cluster.setScaleAt(index, v3.set(1, 1, 1));
-        }
+    for (let i = 0; i < count; i++) {
+        const data = shelvesData[i];
+        cluster.setQuaternionAt(i, quaternion);
+        cluster.setPositionAt(i, v3.set( data.x+ Warehouse.unit / 2, Warehouse.unit, data.z + Warehouse.unit / 2));
+        cluster.setScaleAt(i, v3.set(1, 1, 1));
     }
 
     cluster.castShadow = true;
-    // cluster.receiveShadow = true;
+    cluster.receiveShadow = true;
 
     scene.add(cluster)
 }
