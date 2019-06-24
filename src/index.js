@@ -38,6 +38,7 @@ export const Warehouse = {
     manMixer: undefined,
     arms: [],
     armMixers: [],
+    rotatesCluster: undefined,
 };
 
 
@@ -68,6 +69,8 @@ function main() {
     initRotates(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
     // initManInstance(warehouseSystem, Warehouse);
+
+    let startQuan = 0;
 
     function render() {
         if (resizeRendererToDisplaySize(renderer)) {
@@ -106,6 +109,20 @@ function main() {
                 const v3 = new THREE.Vector3();
                 Warehouse.manCluster.setPositionAt(i, v3.set(x, y, ++z));
                 Warehouse.manCluster.needsUpdate('position')
+            }
+        }
+
+
+        if (Warehouse.rotatesCluster) {
+            const cluster = Warehouse.rotatesCluster;
+            const delta = 0.001;
+
+            for (let i = 0; i < cluster.numInstances; i++) {
+                let q = cluster.getQuaternionAt(i)
+                startQuan += Math.PI * delta;
+                q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), startQuan)
+                cluster.setQuaternionAt(i, q);
+                cluster.needsUpdate('quaternion')
             }
         }
 

@@ -44,6 +44,7 @@ export function initRotates(scene, Warehouse) {
     }
 
     cluster.receiveShadow = true;
+    Warehouse.rotatesCluster = cluster;
 
     scene.add(cluster)
 }
