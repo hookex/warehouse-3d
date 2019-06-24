@@ -11,7 +11,7 @@ stats.begin();
 document.body.appendChild(stats.dom);
 
 import {resizeRendererToDisplaySize} from './display'
-import {initShelf} from './shelf'
+import {initInstancingShelf} from './intancing-shelf'
 import {initCamera} from './camera'
 import {initMeshShelf} from './mesh-shelf'
 import {initLight} from "./light";
@@ -33,6 +33,7 @@ import {initForbidden} from "./forbidden";
 let clock = new THREE.Clock();
 
 export const Warehouse = {
+    renderer: undefined,
     width: MapData.width * MapData.unit,
     length: MapData.length * MapData.unit,
     unit: MapData.unit,
@@ -48,14 +49,14 @@ export const Warehouse = {
 
 function main() {
     const canvas = document.querySelector('#warehouse');
-    const renderer = new THREE.WebGLRenderer({
+    Warehouse.renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
         precision: "highp",
         powerPreference: "high-performance",
     });
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    Warehouse.renderer.shadowMap.enabled = true;
+    Warehouse.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const camera = initCamera(Warehouse);
 
@@ -72,7 +73,6 @@ function main() {
 
     initPlane(warehouseSystem);
     initLight(scene);
-    initMeshShelf(warehouseSystem, 200);
     initLogo(warehouseSystem, Warehouse);
     initArm(warehouseSystem, Warehouse);
     initRotates(warehouseSystem, Warehouse);
@@ -80,14 +80,15 @@ function main() {
     initQueue(warehouseSystem, Warehouse);
     initCharger(warehouseSystem, Warehouse);
     initForbidden(warehouseSystem, Warehouse);
+    // initMeshShelf(warehouseSystem, Warehouse);
+    initInstancingShelf(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
-    // initCharger(warehouseSystem, Warehouse);
 
     let startQuan = 0;
 
     function render() {
-        if (resizeRendererToDisplaySize(renderer)) {
-            const canvas = renderer.domElement;
+        if (resizeRendererToDisplaySize(Warehouse.renderer)) {
+            const canvas = Warehouse.renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
         }
@@ -128,7 +129,7 @@ function main() {
 
         if (Warehouse.rotatesCluster) {
             const cluster = Warehouse.rotatesCluster;
-            const delta = 0.001;
+            const delta = 0.002;
 
             for (let i = 0; i < cluster.numInstances; i++) {
                 let q = cluster.getQuaternionAt(i)
@@ -139,7 +140,7 @@ function main() {
             }
         }
 
-        renderer.render(scene, camera);
+        Warehouse.renderer.render(scene, camera);
 
         stats.update();
         requestAnimationFrame(render);

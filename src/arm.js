@@ -20,7 +20,7 @@ export function initArm(group, Warehouse) {
 
         const fix = {
             rot: [0, Math.PI / 2, 0],
-            scalar: 0.5,
+            scalar: 0.3,
         };
 
         let armsData = MapData.arms.map((data) => {
@@ -42,7 +42,7 @@ export function initArm(group, Warehouse) {
             armClone.scale.setScalar(fix.scalar);
             armClone.position.set(0, 0, 0);
             obj.add(armClone);
-            obj.position.set(data.x + Warehouse.unit / 2, 0, data.z + Warehouse.unit / 2);
+            obj.position.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2);
             Warehouse.arms.push(obj);
             group.add(obj);
 

@@ -18,8 +18,8 @@ export function initParkZones(scene, Warehouse) {
     const loader = new THREE.TextureLoader();
     const texture = loader.load('/src/images/station.png');
 
-    let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit, Warehouse.unit);
-    geometry.rotateX(-Math.PI / 2)
+    let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit-4, Warehouse.unit-4);
+    geometry.rotateX(-Math.PI / 2);
     let material = new THREE.MeshLambertMaterial({map: texture});
     material.transparent = true;
 
@@ -39,11 +39,11 @@ export function initParkZones(scene, Warehouse) {
     for (let i = 0; i < count; i++) {
         const data = parkZones[i];
         cluster.setQuaternionAt(i, quaternion);
-        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2));
+        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2+1, 1, data.z + Warehouse.unit / 2+1));
         cluster.setScaleAt(i, v3.set(1, 1, 1));
     }
 
-    cluster.receiveShadow = true;
+    cluster.receiveShadow = false;
 
     scene.add(cluster)
 }
