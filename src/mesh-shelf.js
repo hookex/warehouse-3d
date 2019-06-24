@@ -15,7 +15,7 @@ export function initMeshShelf(scene) {
 
     let count = shelvesData.length;
 
-    let geometry = new THREE.BoxBufferGeometry(Warehouse.unit, Warehouse.unit * 2, Warehouse.unit);
+    let geometry = new THREE.BoxBufferGeometry(Warehouse.unit-2, Warehouse.unit * 2, Warehouse.unit-2,1,1,1);
     let material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
     material.transparent = true;
     material.opacity = 0.8;
@@ -32,12 +32,10 @@ export function initMeshShelf(scene) {
     let v3 = new THREE.Vector3();
     let quaternion = new THREE.Quaternion();
 
-    let subCount = parseInt(Math.sqrt(count))
-
     for (let i = 0; i < count; i++) {
         const data = shelvesData[i];
         cluster.setQuaternionAt(i, quaternion);
-        cluster.setPositionAt(i, v3.set( data.x+ Warehouse.unit / 2, Warehouse.unit, data.z + Warehouse.unit / 2));
+        cluster.setPositionAt(i, v3.set( data.x+ Warehouse.unit / 2 + 1, Warehouse.unit, data.z + Warehouse.unit / 2 + 1));
         cluster.setScaleAt(i, v3.set(1, 1, 1));
     }
 

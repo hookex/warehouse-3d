@@ -48,7 +48,10 @@ export const Warehouse = {
 
 function main() {
     const canvas = document.querySelector('#warehouse');
-    const renderer = new THREE.WebGLRenderer({canvas});
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+    });
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.BasicShadowMap;
 
