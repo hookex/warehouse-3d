@@ -136,14 +136,14 @@ export const MapData = {
         x: 3,
         z: 1,
     }, {
-        x: 3,
-        z: 2,
+        x: 4,
+        z: 1,
     }, {
-        x: 3,
-        z: 3,
+        x: 5,
+        z: 1,
     }, {
-        x: 3,
-        z: 4,
+        x: 6,
+        z: 1,
     }],
     rotates: [{
         x: 2,

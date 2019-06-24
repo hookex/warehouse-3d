@@ -28,6 +28,7 @@ import {initRotates} from "./rotate";
 import {initParkZones} from "./park";
 import {initQueue} from "./queue";
 import {initCharger} from "./charger";
+import {initForbidden} from "./forbidden";
 
 let clock = new THREE.Clock();
 
@@ -73,6 +74,7 @@ function main() {
     initParkZones(warehouseSystem, Warehouse);
     initQueue(warehouseSystem, Warehouse);
     initCharger(warehouseSystem, Warehouse);
+    initForbidden(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
     // initCharger(warehouseSystem, Warehouse);
 
