@@ -46,11 +46,11 @@ export function initArm(group, Warehouse) {
             Warehouse.arms.push(obj);
             group.add(obj);
 
-            // const mixer = new THREE.AnimationMixer(armClone);
-            // Warehouse.armMixers.push(mixer);
-            // const action = mixer.clipAction(gltf.animations[0]);
-            // action.timeScale = 2;
-            // action.startAt(Math.random() * 2).play();
+            const mixer = new THREE.AnimationMixer(armClone);
+            Warehouse.armMixers.push(mixer);
+            const action = mixer.clipAction(gltf.animations[0]);
+            action.timeScale = 2;
+            action.startAt(Math.random() * 2).play();
         }
     });
 }

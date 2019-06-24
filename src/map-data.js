@@ -63,7 +63,7 @@ export const MapData = {
         x: 7,
         z: 6,
     }],
-    workZones: [{
+    queue: [{
         x: 0,
         z: 1,
     }, {

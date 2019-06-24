@@ -6,7 +6,6 @@ const gui = new Dat.GUI();
 
 class AxisGridHelper {
     constructor(node) {
-        console.log('node', node)
         const box = new THREE.Box3().setFromObject(node);
         const length = box.getSize().x;
 
@@ -33,7 +32,7 @@ class AxisGridHelper {
     set visible(v) {
         this._visible = v;
         this.grid.visible = v;
-        this.axes.visible = v;
+        this.axes.visible = false;
     }
 }
 
