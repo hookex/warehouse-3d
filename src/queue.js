@@ -18,7 +18,7 @@ export function initQueue(scene, Warehouse) {
     const loader = new THREE.TextureLoader();
     const texture = loader.load('/src/images/StationQueue.png');
 
-    let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit, Warehouse.unit);
+    let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit-2, Warehouse.unit-2);
     geometry.rotateX(-Math.PI / 2);
     let material = new THREE.MeshLambertMaterial({map: texture});
     material.transparent = true;
@@ -39,7 +39,7 @@ export function initQueue(scene, Warehouse) {
     for (let i = 0; i < count; i++) {
         const data = queue[i];
         cluster.setQuaternionAt(i, quaternion);
-        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2));
+        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2+1, 1, data.z + Warehouse.unit / 2+1));
         cluster.setScaleAt(i, v3.set(1, 1, 1));
     }
 

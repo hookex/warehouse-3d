@@ -51,9 +51,11 @@ function main() {
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
+        precision: "highp",
+        powerPreference: "high-performance",
     });
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.BasicShadowMap;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const camera = initCamera(Warehouse);
 

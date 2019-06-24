@@ -20,7 +20,7 @@ export function initLogo(group) {
         const box = new THREE.Box3().setFromObject(mesh);
         const fontWidth = box.getSize().x;
 
-        mesh.position.set(Warehouse.width / 2 - fontWidth / 2, 0, Warehouse.length - Warehouse.unit / 2)
+        mesh.position.set(Warehouse.width / 2 - fontWidth / 2, 1, Warehouse.length - Warehouse.unit / 2);
         group.add(mesh);
     });
 }
