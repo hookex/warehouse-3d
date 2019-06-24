@@ -175,10 +175,10 @@ export const MapData = {
         z: 9,
     }],
     chargers: [{
-        x: 3,
+        x: 2,
         z: 9,
     }, {
-        x: 4,
+        x: 3,
         z: 9,
     }],
     roads: [],

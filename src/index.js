@@ -27,6 +27,7 @@ import {MapData} from './map-data'
 import {initRotates} from "./rotate";
 import {initParkZones} from "./park";
 import {initQueue} from "./queue";
+import {initCharger} from "./charger";
 
 let clock = new THREE.Clock();
 
@@ -71,8 +72,9 @@ function main() {
     initRotates(warehouseSystem, Warehouse);
     initParkZones(warehouseSystem, Warehouse);
     initQueue(warehouseSystem, Warehouse);
+    initCharger(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
-    // initManInstance(warehouseSystem, Warehouse);
+    // initCharger(warehouseSystem, Warehouse);
 
     let startQuan = 0;
 
