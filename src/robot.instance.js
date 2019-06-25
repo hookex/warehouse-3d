@@ -7,12 +7,14 @@ import {MapData} from "./map-data";
 const InstancedMesh = require('three-instanced-mesh')(THREE);
 const manCount = 100;
 
-export function initCharger(group) {
+export function initInstancingRobot(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/battery/scene.gltf', (gltf) => {
+    gltfLoader.load('/src/models/voxel_robot/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
+                console.log('robot', child)
+
                 if (child.castShadow !== undefined) {
                     child.castShadow = true;
                 }
@@ -20,32 +22,30 @@ export function initCharger(group) {
         });
 
         const root = gltf.scene;
-        const battery = root.getObjectByName('battery_Material_#26_0');
+        const robot = root.getObjectById(83);
 
-        if (!battery) {
+        if (!robot) {
             return;
         }
 
         const fix = {
-            rot: [0, 0, 0],
-            scalar: 10,
+            rot: [-Math.PI / 2, Math.PI / 2, 0],
+            scalar: 2,
         };
 
-        battery.geometry.rotateX(fix.rot[0]);
-        battery.geometry.rotateY(fix.rot[1]);
-        battery.geometry.rotateZ(fix.rot[2]);
-        battery.geometry.scale(fix.scalar, fix.scalar, fix.scalar);
+        robot.geometry.rotateX(fix.rot[0]);
+        robot.geometry.rotateY(fix.rot[1]);
+        robot.geometry.rotateZ(fix.rot[2]);
+        robot.geometry.scale(fix.scalar, fix.scalar, fix.scalar);
+        const box = new THREE.Box3().setFromObject(robot);
+        console.log('box.getSize()',box.getSize())
 
-        const box = new THREE.Box3().setFromObject(battery);
         const width = box.getSize().x / 2;
-        const length = box.getSize().z / 2;
-        const height = box.getSize().y;
-        battery.position.set(0, 0, 0);
-
+        const length = box.getSize().y / 2;
 
         const cluster = new InstancedMesh(
-            battery.geometry,
-            battery.material,
+            robot.geometry,
+            robot.material,
             manCount,
             true,
             false,
@@ -55,26 +55,22 @@ export function initCharger(group) {
         let v3 = new THREE.Vector3();
         let quaternion = new THREE.Quaternion();
 
-        let chargersData = MapData.chargers.map((data) => {
+        let robotsData = MapData.robots.map((data) => {
             return {
                 x: data.x * MapData.unit,
                 z: data.z * MapData.unit,
             }
         });
 
-        let count = chargersData.length;
+        let count = robotsData.length;
 
         for (let i = 0; i < count; i++) {
-            const data = chargersData[i];
+            const data = robotsData[i];
             cluster.setQuaternionAt(i, quaternion);
-            cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, height/2, data.z + Warehouse.unit / 2 - length/2));
+            cluster.setPositionAt(i, v3.set(data.x, 0, data.z));
             cluster.setScaleAt(i, v3.set(1, 1, 1));
         }
-
-        cluster.visible = true;
-        cluster.castShadow = true;
-        cluster.receiveShadow = true;
-
+        Warehouse.robotCluster = cluster;
         group.add(cluster);
     });
 }

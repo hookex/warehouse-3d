@@ -19,7 +19,7 @@ import {initPlane} from "./plane";
 import {initLogo} from "./logo";
 import {makeAxisGrid} from "./gui";
 import {initMan} from "./man";
-import {initManInstance} from "./man.instance";
+import {initInstancingRobot} from "./robot.instance";
 import {getRandomPosition} from "./util";
 import {initArm} from "./arm";
 
@@ -82,9 +82,11 @@ function main() {
     initForbidden(warehouseSystem, Warehouse);
     // initMeshShelf(warehouseSystem, Warehouse);
     initInstancingShelf(warehouseSystem, Warehouse);
+    initInstancingRobot(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
 
-    let startQuan = 0;
+    let rotateStartRotate = 0;
+    let robotStartRotate = 0;
 
     function render() {
         if (resizeRendererToDisplaySize(Warehouse.renderer)) {
@@ -132,13 +134,26 @@ function main() {
             const delta = 0.002;
 
             for (let i = 0; i < cluster.numInstances; i++) {
-                let q = cluster.getQuaternionAt(i)
-                startQuan += Math.PI * delta;
-                q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), startQuan)
+                let q = cluster.getQuaternionAt(i);
+                rotateStartRotate += Math.PI * delta;
+                q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rotateStartRotate)
                 cluster.setQuaternionAt(i, q);
                 cluster.needsUpdate('quaternion')
             }
         }
+
+        // if (Warehouse.robotCluster) {
+        //     const cluster = Warehouse.robotCluster;
+        //     const delta = 0.001;
+        //
+        //     for (let i = 0; i < cluster.numInstances; i++) {
+        //         let q = cluster.getQuaternionAt(i);
+        //         robotStartRotate += Math.PI * delta;
+        //         q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
+        //         cluster.setQuaternionAt(i, q);
+        //         cluster.needsUpdate('quaternion')
+        //     }
+        // }
 
         Warehouse.renderer.render(scene, camera);
 

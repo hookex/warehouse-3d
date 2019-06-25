@@ -74,6 +74,10 @@ export function initInstancingShelf(group) {
             cluster.setScaleAt(i, v3.set(1, 1, 1));
         }
 
+        cluster.visible = true;
+        cluster.castShadow = true;
+        cluster.receiveShadow = true;
+
         group.add(cluster);
     });
 }

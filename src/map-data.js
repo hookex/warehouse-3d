@@ -182,4 +182,17 @@ export const MapData = {
         z: 9,
     }],
     roads: [],
+    robots: [{
+        x: 0,
+        z: 3,
+    }, {
+        x: 0,
+        z: 4,
+    }, {
+        x: 0,
+        z: 5,
+    }, {
+        x: 0,
+        z: 6,
+    }]
 };

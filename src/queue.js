@@ -33,7 +33,6 @@ export function initQueue(scene, Warehouse) {
         false,
     );
 
-
     let v3 = new THREE.Vector3();
     let quaternion = new THREE.Quaternion();
 
