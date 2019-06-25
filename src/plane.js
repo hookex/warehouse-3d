@@ -13,7 +13,7 @@ export function initPlane(group) {
 
     const planeGeo = new THREE.PlaneGeometry(Warehouse.width, Warehouse.length, 1, 1);
     const planeMat = new THREE.MeshLambertMaterial({
-        color: new THREE.Color(0x999999),
+        color: new THREE.Color(0x888888),
         side: THREE.DoubleSide,
         shading: THREE.SmoothShading
     });

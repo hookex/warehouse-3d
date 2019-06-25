@@ -1,7 +1,5 @@
 import * as THREE from "three";
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
-import {Warehouse, WarehouseLength, WarehouseUnit} from "./index";
-import {getRandomPosition} from "./util";
 import {MapData} from "./map-data";
 
 export function initArm(group, Warehouse) {
@@ -10,6 +8,10 @@ export function initArm(group, Warehouse) {
     gltfLoader.load('/src/models/robotarm/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
+                child.material = new THREE.MeshLambertMaterial({
+                    color: child.material.color
+                });
+
                 if (child.castShadow !== undefined) {
                     child.castShadow = true;
                 }
@@ -40,6 +42,7 @@ export function initArm(group, Warehouse) {
             armClone.rotation.set(...fix.rot);
             armClone.scale.setScalar(fix.scalar);
             armClone.position.set(0, 0, 0);
+            console.log('armClone', armClone)
             obj.add(armClone);
             obj.position.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2);
             Warehouse.arms.push(obj);
