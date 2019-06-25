@@ -31,7 +31,6 @@ export function initArm(group, Warehouse) {
         });
 
         let count = armsData.length;
-        console.log('count', armsData, count);
 
         for (let i = 0; i < count; i++) {
             const data = armsData[i];

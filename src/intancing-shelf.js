@@ -20,14 +20,11 @@ export function initInstancingShelf(group) {
     let count = shelvesData.length;
 
     gltfLoader.load('/src/models/box/scene.gltf', (gltf) => {
-        console.log('simple_shelf', gltf);
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
-                console.log('child', child)
                 if (child.castShadow !== undefined) {
                     child.castShadow = true;
                 }
-                console.log("mesh", child);
             }
         });
 
@@ -39,7 +36,7 @@ export function initInstancingShelf(group) {
         }
 
         const fix = {
-            rot: [-Math.PI/2, 0, 0],
+            rot: [-Math.PI / 2, 0, 0],
             scalar: 18,
         };
 
@@ -54,14 +51,18 @@ export function initInstancingShelf(group) {
         const height = box.getSize().y;
         shelf.position.set(0, 0, 0);
 
+        const material = new THREE.MeshLambertMaterial({
+            color: new THREE.Color(0xFFFFFF),
+            map: shelf.material.map,
+        });
 
         const cluster = new InstancedMesh(
             shelf.geometry,
-            shelf.material,
+            material,
             count,
-            true,
             false,
-            true,
+            false,
+            false,
         );
 
         let v3 = new THREE.Vector3();
@@ -70,7 +71,7 @@ export function initInstancingShelf(group) {
         for (let i = 0; i < count; i++) {
             const data = shelvesData[i];
             cluster.setQuaternionAt(i, quaternion);
-            cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, height/2, data.z + Warehouse.unit / 2));
+            cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, height / 2, data.z + Warehouse.unit / 2));
             cluster.setScaleAt(i, v3.set(1, 1, 1));
         }
 

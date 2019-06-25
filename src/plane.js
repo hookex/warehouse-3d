@@ -15,8 +15,6 @@ export function initPlane(group) {
     const planeMat = new THREE.MeshLambertMaterial({
         color: new THREE.Color(0x999999),
         side: THREE.DoubleSide,
-        shininess: 150,
-        specular: 0x888888,
         shading: THREE.SmoothShading
     });
     const mesh = new THREE.Mesh(planeGeo, planeMat);

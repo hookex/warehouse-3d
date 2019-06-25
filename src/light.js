@@ -9,6 +9,7 @@ export function initLight(group) {
     const spotLight = new THREE.SpotLight(0xffffff);
     spotLight.name = 'Spot Light';
     spotLight.angle = 1;
+    spotLight.intensity = 1.5;
     spotLight.penumbra = 0.3;
     spotLight.position.set(Warehouse.width / 2, Warehouse.length, 2 * Warehouse.width);
     spotLight.castShadow = true;

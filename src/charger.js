@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
-import {getRandomPosition} from "./util";
 import {Warehouse} from "./index";
 import {MapData} from "./map-data";
 
@@ -43,9 +42,13 @@ export function initCharger(group) {
         battery.position.set(0, 0, 0);
 
 
+        const material = new THREE.MeshLambertMaterial({
+            map: battery.material.map
+        });
+
         const cluster = new InstancedMesh(
             battery.geometry,
-            battery.material,
+            material,
             manCount,
             true,
             false,
@@ -74,6 +77,7 @@ export function initCharger(group) {
         cluster.visible = true;
         cluster.castShadow = true;
         cluster.receiveShadow = true;
+        cluster.frustumCulled = true;
 
         group.add(cluster);
     });

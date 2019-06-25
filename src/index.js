@@ -29,6 +29,7 @@ import {initParkZones} from "./park";
 import {initQueue} from "./queue";
 import {initCharger} from "./charger";
 import {initForbidden} from "./forbidden";
+import {initAnimateInstancingRobot} from "./robot.animate.instancing";
 
 let clock = new THREE.Clock();
 
@@ -83,6 +84,7 @@ function main() {
     // initMeshShelf(warehouseSystem, Warehouse);
     initInstancingShelf(warehouseSystem, Warehouse);
     initInstancingRobot(warehouseSystem, Warehouse);
+    // initAnimateInstancingRobot(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
 
     let rotateStartRotate = 0;
@@ -142,18 +144,19 @@ function main() {
             }
         }
 
-        // if (Warehouse.robotCluster) {
-        //     const cluster = Warehouse.robotCluster;
-        //     const delta = 0.001;
-        //
-        //     for (let i = 0; i < cluster.numInstances; i++) {
-        //         let q = cluster.getQuaternionAt(i);
-        //         robotStartRotate += Math.PI * delta;
-        //         q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
-        //         cluster.setQuaternionAt(i, q);
-        //         cluster.needsUpdate('quaternion')
-        //     }
-        // }
+        if (Warehouse.robotCluster) {
+            // Warehouse.robotCluster.geometry = new THREE.BufferGeometry();
+            // const cluster = Warehouse.robotCluster;
+            // const delta = 0.001;
+            //
+            // for (let i = 0; i < cluster.numInstances; i++) {
+            //     let q = cluster.getQuaternionAt(i);
+            //     robotStartRotate += Math.PI * delta;
+            //     q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
+            //     cluster.setQuaternionAt(i, q);
+            //     cluster.needsUpdate('quaternion')
+            // }
+        }
 
         Warehouse.renderer.render(scene, camera);
 
