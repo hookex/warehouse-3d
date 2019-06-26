@@ -39,7 +39,7 @@ export function initParkZones(scene, Warehouse) {
     for (let i = 0; i < count; i++) {
         const data = parkZones[i];
         cluster.setQuaternionAt(i, quaternion);
-        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2+1, 1, data.z + Warehouse.unit / 2+1));
+        cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2));
         cluster.setScaleAt(i, v3.set(1, 1, 1));
     }
 

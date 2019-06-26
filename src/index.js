@@ -30,10 +30,13 @@ import {initQueue} from "./queue";
 import {initCharger} from "./charger";
 import {initForbidden} from "./forbidden";
 import {initAnimateInstancingRobot} from "./robot.animate.instancing";
+import {initInstancingElevator} from "./elevator";
+import {initPlaneModel} from "./plane.model";
 
 let clock = new THREE.Clock();
 
 export const Warehouse = {
+    cameraType: "global", // "global" | "robot"
     renderer: undefined,
     width: MapData.width * MapData.unit,
     length: MapData.length * MapData.unit,
@@ -73,6 +76,7 @@ function main() {
     // makeAxisGrid(warehouseSystem);
 
     initPlane(warehouseSystem);
+    // initPlaneModel(warehouseSystem, Warehouse);
     initLight(scene);
     initLogo(warehouseSystem, Warehouse);
     initArm(warehouseSystem, Warehouse);
@@ -84,6 +88,7 @@ function main() {
     // initMeshShelf(warehouseSystem, Warehouse);
     initInstancingShelf(warehouseSystem, Warehouse);
     initInstancingRobot(warehouseSystem, Warehouse);
+    // initInstancingElevator(warehouseSystem, Warehouse);
     // initAnimateInstancingRobot(warehouseSystem, Warehouse);
     // initMan(warehouseSystem, Warehouse);
 
@@ -140,22 +145,51 @@ function main() {
                 rotateStartRotate += Math.PI * delta;
                 q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rotateStartRotate)
                 cluster.setQuaternionAt(i, q);
-                cluster.needsUpdate('quaternion')
+                cluster.needsUpdate('quaternion');
             }
         }
 
         if (Warehouse.robotCluster) {
-            // Warehouse.robotCluster.geometry = new THREE.BufferGeometry();
-            // const cluster = Warehouse.robotCluster;
-            // const delta = 0.001;
-            //
-            // for (let i = 0; i < cluster.numInstances; i++) {
-            //     let q = cluster.getQuaternionAt(i);
-            //     robotStartRotate += Math.PI * delta;
-            //     q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
-            //     cluster.setQuaternionAt(i, q);
-            //     cluster.needsUpdate('quaternion')
-            // }
+            const cluster = Warehouse.robotCluster;
+            const delta = 0.01;
+
+            for (let i = 0; i < cluster.numInstances; i++) {
+                if (MapData.robots[i].type === 'rotate') {
+                    let q = cluster.getQuaternionAt(i);
+                    robotStartRotate += Math.PI * delta;
+                    q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
+                    cluster.setQuaternionAt(i, q);
+                    cluster.needsUpdate('quaternion')
+                }
+
+
+
+                if (MapData.robots[i].type === 'move') {
+                    const robotData = MapData.robots[i];
+                    let face = robotData['face'];
+                    let start = robotData['move'][0].z * Warehouse.unit + Warehouse.unit / 2;
+                    let end = robotData['move'][1].z * Warehouse.unit + Warehouse.unit / 2;
+
+                    let {x, y, z} = cluster.getPositionAt(i);
+
+                    if (face === 1 && z < end) {
+                        z += (delta * 50);
+                        cluster.setPositionAt(i, new THREE.Vector3(x, y, z));
+                        cluster.needsUpdate('position');
+                    } else if (face === -1 && z > start) {
+                        z -= (delta * 50);
+                        cluster.setPositionAt(i, new THREE.Vector3(x, y, z));
+                        cluster.needsUpdate('position');
+                    } else if (z === end || z === start) {
+                        // MapData.robots[i].face = -MapData.robots[i].face;
+                        let q = cluster.getQuaternionAt(i);
+                        robotStartRotate += Math.PI;
+                        q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate);
+                        cluster.setQuaternionAt(i, q);
+                        cluster.needsUpdate('quaternion');
+                    }
+                }
+            }
         }
 
         Warehouse.renderer.render(scene, camera);

@@ -37,10 +37,6 @@ export function initAnimateInstancingRobot(group, Warehouse) {
         robot.geometry.rotateY(fix.rot[1]);
         robot.geometry.rotateZ(fix.rot[2]);
         robot.geometry.scale(fix.scalar, fix.scalar, fix.scalar);
-        const box = new THREE.Box3().setFromObject(robot);
-
-        const width = box.getSize().x / 2;
-        const length = box.getSize().y / 2;
 
         const cluster = new InstancedMesh(
             robot.geometry,
@@ -69,6 +65,12 @@ export function initAnimateInstancingRobot(group, Warehouse) {
             cluster.setPositionAt(i, v3.set(data.x + Warehouse.unit/2, 0, data.z+Warehouse.unit/2));
             cluster.setScaleAt(i, v3.set(1, 1, 1));
         }
+
+        cluster.visible = true;
+        cluster.castShadow = true;
+        cluster.receiveShadow = true;
+        cluster.frustumCulled = true;
+
         group.add(cluster);
     });
 }

@@ -106,8 +106,8 @@ export const MapData = {
         x: 8,
         z: 9,
     }, {
-        x: 0,
-        z: 8,
+        x: 8,
+        z: 0,
     }],
     arms: [{
         x: 9,
@@ -124,13 +124,6 @@ export const MapData = {
     }, {
         x: 9,
         z: 5,
-    }],
-    elevator: [{
-        x: 2,
-        z: 9,
-    }, {
-        x: 3,
-        z: 9,
     }],
     forbidden: [{
         x: 3,
@@ -171,8 +164,8 @@ export const MapData = {
         x: 9,
         z: 9,
     }, {
-        x: 0,
-        z: 9,
+        x: 9,
+        z: 0,
     }],
     chargers: [{
         x: 2,
@@ -184,15 +177,44 @@ export const MapData = {
     roads: [],
     robots: [{
         x: 0,
+        z: 2,
+        type: 'rotate',
+    }, {
+        x: 0,
         z: 3,
+        type: 'static',
     }, {
         x: 0,
         z: 4,
+        type: 'static',
     }, {
         x: 0,
         z: 5,
+        type: 'static',
     }, {
         x: 0,
         z: 6,
-    }]
+        type: 'static',
+    }, {
+        x: 4,
+        z: 0,
+        type: 'move',
+        camera: true,
+        face: 1,
+        move: [{z: 3}, {z: 8}],
+    }, {
+        x: 5,
+        z: 1,
+        type: 'move',
+        face: 1,
+        move: [{z: 3}, {z: 8}],
+    }, {
+        x: 9,
+        z: 7,
+        type: 'rotate',
+    }],
+    elevators: [{
+        x: 9,
+        z: 6,
+    }],
 };
