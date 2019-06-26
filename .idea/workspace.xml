@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa27ea56-435c-43ec-b312-4180ff1c8c0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/elevator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/elevator/scene.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/elevator/scene.gltf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/two_side_plane/TwoSidedPlane.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/two_side_plane/TwoSidedPlane.gltf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/two_side_plane/TwoSidedPlane_BaseColor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/two_side_plane/TwoSidedPlane_MetallicRoughness.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/two_side_plane/TwoSidedPlane_Normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plane.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/arm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map-data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/park.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/park.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/robot.animate.instancing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot.animate.instancing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/robot.instance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot.instance.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -66,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="191" selection-start-line="191" selection-end-line="191" />
+            <state relative-caret-position="113">
+              <caret line="164" column="52" selection-start-line="164" selection-start-column="52" selection-end-line="164" selection-end-column="52" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#334#387#0" expanded="true" />
@@ -365,18 +350,18 @@
       <updated>1560775909900</updated>
       <workItem from="1560775912749" duration="388000" />
       <workItem from="1560776416609" duration="1828000" />
-      <workItem from="1560825952548" duration="89011000" />
+      <workItem from="1560825952548" duration="89176000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91227000" />
+    <option name="totallyTimeSpent" value="91392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1419" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5421903" visible="true" weight="0.16049382" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5421903" visible="true" weight="0.16049382" />
       <window_info id="Structure" order="1" sideWeight="0.45567867" side_tool="true" weight="0.22551093" />
       <window_info id="npm" order="2" sideWeight="0.45679012" side_tool="true" weight="0.22832981" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -390,7 +375,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.7686747" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" x="0" y="288" width="1080" height="612" id="Terminal" order="11" weight="0.22703412" />
+      <window_info active="true" anchor="bottom" x="0" y="288" width="1080" height="612" id="Terminal" order="11" visible="true" weight="0.22703412" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.3297568" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -741,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="191" selection-start-line="191" selection-end-line="191" />
+        <state relative-caret-position="113">
+          <caret line="164" column="52" selection-start-line="164" selection-start-column="52" selection-end-line="164" selection-end-column="52" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#334#387#0" expanded="true" />

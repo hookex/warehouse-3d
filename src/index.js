@@ -162,8 +162,6 @@ function main() {
                     cluster.needsUpdate('quaternion')
                 }
 
-
-
                 if (MapData.robots[i].type === 'move') {
                     const robotData = MapData.robots[i];
                     let face = robotData['face'];
