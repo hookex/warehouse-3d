@@ -142,7 +142,7 @@ function main() {
 
             for (let i = 0; i < cluster.numInstances; i++) {
                 let q = cluster.getQuaternionAt(i);
-                rotateStartRotate += Math.PI * delta;
+                rotateStartRotate -= Math.PI * delta;
                 q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rotateStartRotate)
                 cluster.setQuaternionAt(i, q);
                 cluster.needsUpdate('quaternion');
@@ -156,7 +156,7 @@ function main() {
             for (let i = 0; i < cluster.numInstances; i++) {
                 if (MapData.robots[i].type === 'rotate') {
                     let q = cluster.getQuaternionAt(i);
-                    robotStartRotate += Math.PI * delta;
+                    robotStartRotate -= Math.PI * delta;
                     q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate)
                     cluster.setQuaternionAt(i, q);
                     cluster.needsUpdate('quaternion')
@@ -181,7 +181,7 @@ function main() {
                     } else if (z === end || z === start) {
                         // MapData.robots[i].face = -MapData.robots[i].face;
                         let q = cluster.getQuaternionAt(i);
-                        robotStartRotate += Math.PI;
+                        robotStartRotate -= Math.PI;
                         q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), robotStartRotate);
                         cluster.setQuaternionAt(i, q);
                         cluster.needsUpdate('quaternion');

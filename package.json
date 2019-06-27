@@ -4,7 +4,7 @@
   "description": "warehouse 3D",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress -d"
+    "start": "webpack-dev-server --host 0.0.0.0 --progress -d"
   },
   "repository": {
     "type": "git",
