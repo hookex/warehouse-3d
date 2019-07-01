@@ -7,7 +7,7 @@ const InstancedMesh = require('three-instanced-mesh')(THREE);
 export function initInstancingRobot(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/voxel_robot/scene.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/voxel_robot/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {

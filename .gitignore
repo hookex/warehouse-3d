@@ -59,4 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+
 .DS_Store
+.deploy.sh

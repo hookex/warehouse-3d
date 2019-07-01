@@ -19,7 +19,7 @@ export function initInstancingElevator(group) {
 
     let count = elevatorsData.length;
 
-    gltfLoader.load('/src/models/elevator/scene.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/elevator/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 console.log('child', child)

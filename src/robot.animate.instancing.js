@@ -11,7 +11,7 @@ const manCount = 100;
 export function initAnimateInstancingRobot(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/man/CesiumMan.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/man/CesiumMan.gltf', (gltf) => {
         console.log('initAnimateInstancingRobot', gltf);
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {

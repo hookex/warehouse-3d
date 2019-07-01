@@ -16,7 +16,7 @@ export function initRotates(scene, Warehouse) {
     let count = rotates.length;
 
     const loader = new THREE.TextureLoader();
-    const texture = loader.load('/src/images/rotate.png');
+    const texture = loader.load('./assets/images/rotate.png');
 
     let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit, Warehouse.unit);
     geometry.rotateX(-Math.PI / 2)

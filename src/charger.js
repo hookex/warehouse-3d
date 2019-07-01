@@ -9,7 +9,7 @@ const manCount = 100;
 export function initCharger(group) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/battery/scene.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/battery/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {

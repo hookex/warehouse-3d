@@ -5,7 +5,7 @@ import {MapData} from "./map-data";
 export function initArm(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/robotarm/scene.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/robotarm/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 child.material = new THREE.MeshLambertMaterial({

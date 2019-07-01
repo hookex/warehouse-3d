@@ -10,7 +10,7 @@ const manCount = 100;
 export function initPlaneModel(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
-    gltfLoader.load('/src/models/two_side_plane/TwoSidedPlane.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/two_side_plane/TwoSidedPlane.gltf', (gltf) => {
         let plane = undefined;
 
         gltf.scene.traverse(function (child) {

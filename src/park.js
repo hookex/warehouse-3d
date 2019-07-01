@@ -16,7 +16,7 @@ export function initParkZones(scene, Warehouse) {
     let count = parkZones.length;
 
     const loader = new THREE.TextureLoader();
-    const texture = loader.load('/src/images/station.png');
+    const texture = loader.load('./assets/images/station.png');
 
     let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit-4, Warehouse.unit-4);
     geometry.rotateX(-Math.PI / 2);

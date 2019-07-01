@@ -9,7 +9,6 @@ const InstancedMesh = require('three-instanced-mesh')(THREE);
 export function initInstancingShelf(group) {
     const gltfLoader = new GLTFLoader();
 
-
     let shelvesData = MapData.shelves.map((data) => {
         return {
             x: data.x * MapData.unit,
@@ -19,7 +18,7 @@ export function initInstancingShelf(group) {
 
     let count = shelvesData.length;
 
-    gltfLoader.load('/src/models/box/scene.gltf', (gltf) => {
+    gltfLoader.load('./assets/models/box/scene.gltf', (gltf) => {
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {

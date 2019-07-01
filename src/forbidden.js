@@ -16,7 +16,7 @@ export function initForbidden(scene, Warehouse) {
     let count = forbiddenData.length;
 
     const loader = new THREE.TextureLoader();
-    const texture = loader.load('/src/images/forbidden.png');
+    const texture = loader.load('./assets/images/forbidden.png');
 
     let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit, Warehouse.unit);
     geometry.rotateX(-Math.PI / 2);

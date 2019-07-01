@@ -16,7 +16,7 @@ export function initQueue(scene, Warehouse) {
     let count = queue.length;
 
     const loader = new THREE.TextureLoader();
-    const texture = loader.load('/src/images/StationQueue.png');
+    const texture = loader.load('./assets/images/StationQueue.png');
     // texture.anisotropy = Warehouse.renderer.capabilities.getMaxAnisotropy();
 
     let geometry = new THREE.PlaneBufferGeometry(Warehouse.unit - 2, Warehouse.unit - 2);

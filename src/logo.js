@@ -3,7 +3,7 @@ import {Warehouse} from "./index";
 
 export function initLogo(group) {
     let loader = new THREE.FontLoader();
-    loader.load('/src/fonts/helvetiker_bold.typeface.json', function (font) {
+    loader.load('./assets/fonts/helvetiker_bold.typeface.json', function (font) {
         let text = "Warehouse";
 
         let geo = new THREE.TextGeometry(text, {
