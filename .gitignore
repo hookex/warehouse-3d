@@ -63,3 +63,4 @@ typings/
 
 .DS_Store
 .deploy.sh
+.dist/
