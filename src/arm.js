@@ -42,7 +42,7 @@ export function initArm(group, Warehouse) {
             armClone.rotation.set(...fix.rot);
             armClone.scale.setScalar(fix.scalar);
             armClone.position.set(0, 0, 0);
-            console.log('armClone', armClone);
+
             obj.add(armClone);
             obj.position.set(data.x + Warehouse.unit / 2, 1, data.z + Warehouse.unit / 2);
             Warehouse.arms.push(obj);

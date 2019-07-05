@@ -12,7 +12,6 @@ export function initAnimateInstancingRobot(group, Warehouse) {
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load('./assets/models/man/CesiumMan.gltf', (gltf) => {
-        console.log('initAnimateInstancingRobot', gltf);
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
                 if (child.castShadow !== undefined) {
